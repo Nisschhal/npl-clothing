@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import CategoryItem from "../category-item/category-item.component";
 
 
@@ -5,7 +6,8 @@ import "./directory.style.scss";
 
 const Directory = ({ categories }) => { 
   return (
-    <div className="directory-container">
+    <Fragment>
+      <div className="directory-container">
         {/* <CategoryItem key={category.id} category={category} /> */}
       {/* {categories.map((category) => (
         ))} */}
@@ -14,6 +16,7 @@ const Directory = ({ categories }) => {
      
        ))} 
     </div>
+    </Fragment>
   );
 };
 
