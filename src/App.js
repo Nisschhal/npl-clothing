@@ -36,7 +36,6 @@ const App = () => {
   
   return <Directory  categories={categories} />
       
-      // <h1>workin</h1>
   ;
 }
 
