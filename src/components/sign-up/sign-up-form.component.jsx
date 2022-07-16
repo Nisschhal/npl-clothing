@@ -1,5 +1,8 @@
 import { useState } from "react";
 import { createAuthUserWithEmailAndPassword, createUserDocumentfromAuth } from "../../utils/firebase/firebase.utils";
+import Button from "../button/button.component";
+import FormInput from "../form-input/form-input.component";
+import './sign-up-form.style.scss'
 
 // setting default form feilds to pass the data to and from models for db
 const defaultFormFields ={
@@ -67,22 +70,55 @@ const SignUpForm = () => {
     }
 
     return (
-        <div>
-            <h1>Sign up with Email/Password</h1>
+        <div className="sign-up-container">
+            <h2>Don't have an account?</h2>
+            <span>Sign up with Email/Password</span>
             {/* // set the changing variables into value so that they update the inpute fields as types go onChange */}
             {/* // once the form is being submitted trigger the below onSubmit function */}
             <form onSubmit={submitHandler}>
-                <label >Full Name</label>
-                <input type="text" onChange={changeHandler} name="displayName" value={displayName} required/>
-                <label >Email</label>
-                <input type="email" onChange={changeHandler} name="email" value={email} required/>
-                <label >Phone Number</label>
-                <input type="text" onChange={changeHandler} name="phoneNumber" value={phoneNumber} required/>
-                <label >Password</label>
-                <input type="password" onChange={changeHandler} name="password" value={password} required/>
-                <label >Confirm Passwor</label>
-                <input type="password" onChange={changeHandler} name="confirmPassword" value={confirmPassword} required/>
-                <button type="submit">Register</button>
+               <FormInput label="Full Name"  
+            //    passing input options as an object by extracting/d-structuring in it
+               inputOptions={{
+                type:"text",
+                onChange:changeHandler,
+                 name:"displayName",
+                  value:displayName ,
+                  required: true, 
+                  autoFocus: false
+               }}/> 
+               <FormInput label="Email"  
+                 inputOptions={{
+                    type:"email",
+                    onChange:changeHandler, 
+                     name:"email",
+                      value:email ,
+                      required: true
+                   }}/> 
+               <FormInput label="Phone Number"  
+                 inputOptions={{
+                    type:"text",
+                    onChange:changeHandler,
+                     name:"phoneNumber",
+                      value:phoneNumber ,
+                      required: true
+                   }}/> 
+               <FormInput label="password"    inputOptions={{
+                type:"password",
+                onChange:changeHandler,
+                 name:"password",
+                  value:password ,
+                  required: true
+               }}/> 
+               <FormInput label="confirmPassword"  inputOptions={{
+                type:"password",
+                onChange:changeHandler,
+                 name:"confirmPassword",
+                  value:confirmPassword ,
+                  required: true
+               }}/> 
+               
+             
+                <Button type="submit">Register</Button>
             </form>
         </div>
     );
