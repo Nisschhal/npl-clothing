@@ -5,7 +5,8 @@ import {
   signInWithRedirect,
   signInWithPopup,
   GoogleAuthProvider,
-  createUserWithEmailAndPassword
+  createUserWithEmailAndPassword, 
+  signInWithEmailAndPassword
 } from "firebase/auth";
 
 // getting required function for the firebaseController and doc for setting and getting doc to and from firestore db
@@ -30,8 +31,10 @@ googleProvider.setCustomParameters({
 });
 
 export const auth = getAuth(); // creating the authentication instance of a user in a site for a whole session
-export const signInWithGooglePopup = () =>
-  signInWithPopup(auth, googleProvider); // for the popup signIn providing the auth instance and google auth provider
+export const signInWithGooglePopup = async () => {
+
+  return await signInWithPopup(auth, googleProvider); // for the popup signIn providing the auth instance and google auth provider
+}
 
 export const db = getFirestore(); // accesing and specifiing the new instance of Firestore database
 
@@ -74,4 +77,10 @@ export const createAuthUserWithEmailAndPassword =  async (email, password) => {
     if (!email || !password) return;
 
     return await createUserWithEmailAndPassword(auth, email, password);
+};
+// exporting function for the email/password signin
+export const signInAuthUserWithEmailAndPassword =  async (email, password) => {
+    if (!email || !password) return;
+
+    return await signInWithEmailAndPassword(auth, email, password);
 };

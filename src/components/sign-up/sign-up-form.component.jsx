@@ -41,7 +41,7 @@ const SignUpForm = () => {
             const {user} = await createAuthUserWithEmailAndPassword(email, password);
             // creating userDoc into db form authenticaiton giving extracted user from above and ADDING additional infromation to spread into the user doc 
             // here displayname and phoneNumber from the input fields to add inthe db
-            const newUser = await createUserDocumentfromAuth(user, {displayName, phoneNumber})
+            const newUser = await createUserDocumentfromAuth(user, {displayName, phoneNumber, password})
             if (newUser) {
                 console.log(newUser);
                 alert("User Successfully Registered");
