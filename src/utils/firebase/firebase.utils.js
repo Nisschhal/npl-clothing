@@ -6,7 +6,9 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
   createUserWithEmailAndPassword, 
-  signInWithEmailAndPassword
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged
 } from "firebase/auth";
 
 // getting required function for the firebaseController and doc for setting and getting doc to and from firestore db
@@ -84,3 +86,8 @@ export const signInAuthUserWithEmailAndPassword =  async (email, password) => {
 
     return await signInWithEmailAndPassword(auth, email, password);
 };
+
+export const signOutUser = async () => await signOut(auth);
+
+// keeps track of the authentication changes and sends the response of authentication through call back
+export const onAuthStateChangeListener = (callback) => onAuthStateChanged(auth, callback);
